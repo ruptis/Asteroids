@@ -4,8 +4,9 @@ namespace Asteroids.Code.Services.ConfigService
 {
     public sealed class ConfigsProvider : IConfigs
     {
-        public async UniTask Initialize()
+        public UniTask Initialize()
         {
+            return default;
         }
     }
 }
