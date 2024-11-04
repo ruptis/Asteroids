@@ -16,7 +16,7 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
 
         public UniTask Enter()
         {
-            _gameplayStateMachine.Enter<GameLoopState>().Forget();
+            _gameplayStateMachine.Enter<GameplayStartingState>().Forget();
             
             return default;
         }

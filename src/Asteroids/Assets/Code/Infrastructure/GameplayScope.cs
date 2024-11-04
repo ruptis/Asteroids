@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Infrastructure.GameplayStates;
+﻿using Asteroids.Code.Gameplay.Services.PlayerFactory;
+using Asteroids.Code.Infrastructure.GameplayStates;
 using Asteroids.Code.Services.Input;
 using Asteroids.Code.Services.RandomService;
 using Asteroids.Code.Tools.StateMachine;
@@ -15,8 +16,10 @@ namespace Asteroids.Code.Infrastructure
 
             builder.Register<IInputService, InputService>(Lifetime.Singleton);
             builder.Register<IRandomService, UnityRandomService>(Lifetime.Singleton);
+            builder.Register<IPlayerFactory, PlayerFactory>(Lifetime.Singleton);
 
             builder.Register<GameplayInitializationState>(Lifetime.Singleton);
+            builder.Register<GameplayStartingState>(Lifetime.Singleton);
             builder.Register<GameLoopState>(Lifetime.Singleton);
             builder.Register<StateFactory>(Lifetime.Singleton);
             builder.Register<GameplayStateMachine>(Lifetime.Singleton);
