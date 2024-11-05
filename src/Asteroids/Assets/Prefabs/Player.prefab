@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 2549926439613562512}
   - component: {fileID: 5681200333557927059}
   - component: {fileID: 2762086700747161475}
+  - component: {fileID: 1798272317814171877}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -492,6 +493,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 1760751358736444497}
+--- !u!114 &1798272317814171877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517499714020356721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552e4c56e7934085aa4fe2dd62c9ba0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainEngine: {fileID: 4075026417050856585}
+  _leftEngine: {fileID: 8956875771523287514}
+  _rightEngine: {fileID: 5281539971834314383}
+  _movement: {fileID: 5681200333557927059}
+  _mainEngineSprites:
+  - Sprite: {fileID: 21300000, guid: c6c6854be4032974c8a6f3ff278bbf8d, type: 3}
+    Power: 0.05
+  _leftEngineSprites:
+  - Sprite: {fileID: 21300000, guid: 9868aec74ad438445a201ef41315ecb5, type: 3}
+    Power: 0.15
+  - Sprite: {fileID: 21300000, guid: 63ace5ca8c7d1fd4a9b1d23f166e58c4, type: 3}
+    Power: 0.4
+  - Sprite: {fileID: 21300000, guid: e8eea65ca9d707248a8a68a850051846, type: 3}
+    Power: 0.7
+  _rightEngineSprites:
+  - Sprite: {fileID: 21300000, guid: 9868aec74ad438445a201ef41315ecb5, type: 3}
+    Power: 0.15
+  - Sprite: {fileID: 21300000, guid: 63ace5ca8c7d1fd4a9b1d23f166e58c4, type: 3}
+    Power: 0.4
+  - Sprite: {fileID: 21300000, guid: e8eea65ca9d707248a8a68a850051846, type: 3}
+    Power: 0.7
 --- !u!1 &7769415737055830962
 GameObject:
   m_ObjectHideFlags: 0
