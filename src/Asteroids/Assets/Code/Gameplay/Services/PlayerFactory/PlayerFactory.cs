@@ -24,6 +24,7 @@ namespace Asteroids.Code.Gameplay.Services.PlayerFactory
             GameObject instance = _resolver.Instantiate(player, Vector3.zero, Quaternion.identity);
 
             instance.GetComponent<ShipMovement>().Configure(5, 180, 1, 1);
+            instance.GetComponent<Gun>().Configure(0.5f, 8);
 
             return instance;
         }

@@ -9,6 +9,7 @@ namespace Asteroids.Code.Gameplay
     {
         private IInputService _inputService;
         [SerializeField] private ShipMovement _shipMovement;
+        [SerializeField] private Gun _gun;
 
         [Inject]
         public void Construct(IInputService inputService) => _inputService = inputService;
@@ -16,6 +17,7 @@ namespace Asteroids.Code.Gameplay
         private void Update()
         {
             _shipMovement.Move(_inputService.Movement);
+            if (_inputService.Fire) _gun.Fire();
         }
     }
 }

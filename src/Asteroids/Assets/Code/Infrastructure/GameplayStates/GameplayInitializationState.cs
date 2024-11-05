@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Tools.StateMachine;
+﻿using Asteroids.Code.Gameplay.Services.BulletFactory;
+using Asteroids.Code.Tools.StateMachine;
 using Cysharp.Threading.Tasks;
 
 namespace Asteroids.Code.Infrastructure.GameplayStates
@@ -6,19 +7,21 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
     public sealed class GameplayInitializationState : IState
     {
         private readonly GameplayStateMachine _gameplayStateMachine;
+        private readonly IBulletFactory _bulletFactory;
 
-        public GameplayInitializationState(GameplayStateMachine gameplayStateMachine)
+        public GameplayInitializationState(GameplayStateMachine gameplayStateMachine, IBulletFactory bulletFactory)
         {
             _gameplayStateMachine = gameplayStateMachine;
+            _bulletFactory = bulletFactory;
         }
 
         public UniTask Exit() => default;
 
-        public UniTask Enter()
+        public async UniTask Enter()
         {
-            _gameplayStateMachine.Enter<GameplayStartingState>().Forget();
+            await _bulletFactory.Initialize();
             
-            return default;
+            _gameplayStateMachine.Enter<GameplayStartingState>().Forget();
         }
     }
 }
