@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Configs;
+﻿using System.Collections.Generic;
+using Asteroids.Code.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Asteroids.Code.Services.ConfigService
@@ -8,5 +9,7 @@ namespace Asteroids.Code.Services.ConfigService
         UniTask Initialize();
         
         PlayerConfig GetPlayerConfig();
+        
+        IReadOnlyList<AsteroidConfig> GetAsteroidsConfigs(AsteroidType type);
     }
 }

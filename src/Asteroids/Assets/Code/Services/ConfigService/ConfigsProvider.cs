@@ -13,6 +13,7 @@ namespace Asteroids.Code.Services.ConfigService
         private readonly IAssets _assets;
 
         private PlayerConfig _playerConfig;
+        private readonly Dictionary<AsteroidType, List<AsteroidConfig>> _asteroidsDictionary = new();
 
         public ConfigsProvider(ILogService logService, IAssets assets)
         {
@@ -27,6 +28,7 @@ namespace Asteroids.Code.Services.ConfigService
             var tasks = new List<UniTask>
             {
                 LoadPlayerConfig(),
+                LoadAsteroidsCollection()
             };
 
             await UniTask.WhenAll(tasks);
@@ -34,9 +36,11 @@ namespace Asteroids.Code.Services.ConfigService
             _logService.Log("Configs initialization finished");
         }
 
-
         public PlayerConfig GetPlayerConfig() => _playerConfig;
 
+        public IReadOnlyList<AsteroidConfig> GetAsteroidsConfigs(AsteroidType type) =>
+            _asteroidsDictionary[type];
+        
         private async UniTask LoadPlayerConfig()
         {
             PlayerConfig[] configs = await GetConfigs<PlayerConfig>();
@@ -45,6 +49,27 @@ namespace Asteroids.Code.Services.ConfigService
                 _playerConfig = configs[0];
 
             _logService.Log("PlayerConfig loaded");
+        }
+
+        private async UniTask LoadAsteroidsCollection()
+        {
+            AsteroidsCollection[] configs = await GetConfigs<AsteroidsCollection>();
+
+            if (EnsureOnlyOneConfig(configs))
+                FillAsteroidsDictionary(configs[0]);
+
+            _logService.Log("AsteroidsCollection loaded");
+        }
+
+        private void FillAsteroidsDictionary(AsteroidsCollection asteroidsCollection)
+        {
+            foreach (AsteroidConfig asteroid in asteroidsCollection.Asteroids)
+            {
+                if (!_asteroidsDictionary.ContainsKey(asteroid.Type))
+                    _asteroidsDictionary.Add(asteroid.Type, new List<AsteroidConfig>());
+
+                _asteroidsDictionary[asteroid.Type].Add(asteroid);
+            }
         }
 
         private bool EnsureOnlyOneConfig<TConfig>(TConfig[] configs)

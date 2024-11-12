@@ -38,6 +38,57 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99a4c4f7afd94f34b89b4f7b0cb00507
+    m_Address: SmallAsteroid1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 883b65efa6ce5c3459d359f19ede6aa9
+    m_Address: SmallAsteroid2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: faa9ff5e2b1840644b19873cb3ea15b9
+    m_Address: BigAsteroid1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c287e52417148274aa326d7a695b3aca
+    m_Address: MediumAsteroid2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a4eb3a0dc281574c890701b7723e47d
+    m_Address: MediumAsteroid1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ab5b7f89ee9095418a07c957c012411
+    m_Address: BigAsteroid3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34decf0c7814dcb4b89bab8d6b7e3121
+    m_Address: BigAsteroid4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d903770c6b6ec6340ad757a853837269
+    m_Address: BigAsteroid2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52239158a4ba7fd4d986392bde7f91f5
+    m_Address: BaseAsteroid
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9880dbd471c98394eb0ec1216b42980b
+    m_Address: AsteroidsCollection
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ab63ca30f8336434abea04c81d65cdbf, type: 2}
   m_SchemaSet:

@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Gameplay.Services.Boundaries;
+﻿using Asteroids.Code.Gameplay.Services.AsteroidFactory;
+using Asteroids.Code.Gameplay.Services.Boundaries;
 using Asteroids.Code.Gameplay.Services.BulletFactory;
 using Asteroids.Code.Gameplay.Services.Camera;
 using Asteroids.Code.Gameplay.Services.CoordinateWrapper;
@@ -27,6 +28,7 @@ namespace Asteroids.Code.Infrastructure
             builder.Register<IRandomService, UnityRandomService>(Lifetime.Singleton);
             builder.Register<IPlayerFactory, PlayerFactory>(Lifetime.Singleton);
             builder.Register<IBulletFactory, PooledBulletFactory>(Lifetime.Singleton);
+            builder.Register<IAsteroidFactory, PooledAsteroidFactory>(Lifetime.Singleton);
             builder.Register<IBoundaries, ScreenBoundaries>(Lifetime.Singleton);
             builder.Register<ICoordinateWrapper, CoordinateWrapper>(Lifetime.Singleton);
             builder.Register<IEnginePowerService, EnginePowerService>(Lifetime.Singleton);
