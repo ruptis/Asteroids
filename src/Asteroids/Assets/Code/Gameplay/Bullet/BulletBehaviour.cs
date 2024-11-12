@@ -1,4 +1,5 @@
 ﻿using System;
+using Asteroids.Code.Gameplay.Movement;
 using UnityEngine;
 
 namespace Asteroids.Code.Gameplay.Bullet
@@ -7,10 +8,10 @@ namespace Asteroids.Code.Gameplay.Bullet
     {
         [SerializeField] private LinearMovement _movement;
 
-        private float _lifetime = 0.5f;
+        private float _lifetime;
 
         public event Action Destroyed;
-        
+
         public void SetLifetime(float lifetime) => _lifetime = lifetime;
 
         public void Launch(Vector2 velocity)
@@ -18,14 +19,14 @@ namespace Asteroids.Code.Gameplay.Bullet
             transform.up = velocity.normalized;
             _movement.Move(velocity);
         }
-        
+
         private void Update()
         {
             _lifetime -= Time.deltaTime;
-            if (_lifetime <= 0) 
+            if (_lifetime <= 0)
                 Destroy();
         }
 
-        private void Destroy() => Destroyed?.Invoke();
+        public void Destroy() => Destroyed?.Invoke();
     }
 }

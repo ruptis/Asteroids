@@ -266,9 +266,12 @@ GameObject:
   - component: {fileID: 8933027283351091033}
   - component: {fileID: 3997222081785960221}
   - component: {fileID: 2549926439613562512}
+  - component: {fileID: 7178351101462351777}
   - component: {fileID: 5681200333557927059}
   - component: {fileID: 2762086700747161475}
   - component: {fileID: 1798272317814171877}
+  - component: {fileID: 2244141201051855195}
+  - component: {fileID: 4887051260983094215}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -466,7 +469,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f837a2c365be47d7a7cd5bcf26c5875d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shipMovement: {fileID: 5681200333557927059}
+  _movement: {fileID: 5681200333557927059}
+  _gun: {fileID: 2762086700747161475}
+--- !u!114 &7178351101462351777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517499714020356721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52caeb0692e24f008705b73525b4294f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movement: {fileID: 5681200333557927059}
   _gun: {fileID: 2762086700747161475}
 --- !u!114 &5681200333557927059
 MonoBehaviour:
@@ -526,6 +543,32 @@ MonoBehaviour:
     Power: 0.4
   - Sprite: {fileID: 21300000, guid: e8eea65ca9d707248a8a68a850051846, type: 3}
     Power: 0.7
+--- !u!114 &2244141201051855195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517499714020356721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b13e6dd19c470387d18f02c079f79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ship: {fileID: 7178351101462351777}
+--- !u!114 &4887051260983094215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517499714020356721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdd034f67b44da6a078a69a26437a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageType: 1
 --- !u!1 &7769415737055830962
 GameObject:
   m_ObjectHideFlags: 0

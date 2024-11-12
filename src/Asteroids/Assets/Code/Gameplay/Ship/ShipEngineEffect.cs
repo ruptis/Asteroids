@@ -1,4 +1,5 @@
 ﻿using System;
+using Asteroids.Code.Gameplay.Movement;
 using Asteroids.Code.Gameplay.Services.EnginePowerService;
 using UnityEngine;
 using VContainer;
@@ -19,7 +20,7 @@ namespace Asteroids.Code.Gameplay.Ship
         [SerializeField] private SpriteRenderer _leftEngine;
         [SerializeField] private SpriteRenderer _rightEngine;
 
-        [SerializeField] private ShipMovement _movement;
+        [SerializeField] private AcceleratedMovement _movement;
 
         [SerializeField] private EffectSpriteConfig[] _mainEngineSprites;
         [SerializeField] private EffectSpriteConfig[] _leftEngineSprites;

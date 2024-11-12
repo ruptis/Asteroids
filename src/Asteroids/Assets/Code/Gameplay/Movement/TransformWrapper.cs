@@ -2,7 +2,7 @@
 using UnityEngine;
 using VContainer;
 
-namespace Asteroids.Code.Gameplay
+namespace Asteroids.Code.Gameplay.Movement
 {
     public sealed class TransformWrapper : MonoBehaviour
     {

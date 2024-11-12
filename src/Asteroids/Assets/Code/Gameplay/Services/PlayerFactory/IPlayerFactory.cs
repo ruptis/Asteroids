@@ -6,6 +6,6 @@ namespace Asteroids.Code.Gameplay.Services.PlayerFactory
 {
     public interface IPlayerFactory
     {
-        UniTask<GameObject> CreatePlayer();
+        UniTask<ShipBehaviour> CreatePlayer();
     }
 }

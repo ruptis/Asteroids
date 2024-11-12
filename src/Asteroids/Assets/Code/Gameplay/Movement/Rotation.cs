@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Code.Gameplay
+namespace Asteroids.Code.Gameplay.Movement
 {
     public sealed class Rotation : MonoBehaviour
     {

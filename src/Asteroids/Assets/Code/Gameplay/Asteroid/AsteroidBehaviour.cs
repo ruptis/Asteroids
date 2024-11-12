@@ -1,4 +1,5 @@
 ﻿using System;
+using Asteroids.Code.Gameplay.Movement;
 using UnityEngine;
 
 namespace Asteroids.Code.Gameplay.Asteroid
@@ -13,7 +14,7 @@ namespace Asteroids.Code.Gameplay.Asteroid
         private bool _isClockwise;
 
         public event Action Destroyed;
-        
+
         public void Configure(float movementSpeed, float rotationSpeed, bool isClockwise)
         {
             _movementSpeed = movementSpeed;
@@ -27,9 +28,6 @@ namespace Asteroids.Code.Gameplay.Asteroid
             _rotation.Rotate(_rotationSpeed, _isClockwise);
         }
 
-        public void Destroy()
-        {
-            Destroyed?.Invoke();
-        }
+        public void Destroy() => Destroyed?.Invoke();
     }
 }

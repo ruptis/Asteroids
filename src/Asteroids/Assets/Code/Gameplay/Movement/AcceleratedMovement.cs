@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Code.Gameplay.Ship
+namespace Asteroids.Code.Gameplay.Movement
 {
-    public sealed class ShipMovement : MonoBehaviour
+    public sealed class AcceleratedMovement : MonoBehaviour
     {
         private float _maxSpeed;
         private float _rotationSpeed;
