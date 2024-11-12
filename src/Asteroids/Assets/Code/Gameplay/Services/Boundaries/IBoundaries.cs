@@ -6,5 +6,7 @@ namespace Asteroids.Code.Gameplay.Services.Boundaries
     {
         Vector2 Min { get; }
         Vector2 Max { get; }
+        
+        Vector2 Center { get; }
     }
 }

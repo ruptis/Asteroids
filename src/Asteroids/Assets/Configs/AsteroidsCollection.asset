@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AsteroidsCollection
   m_EditorClassIdentifier: 
   Asteroids:
-  - Type: 1
-    MovementSpeed: 2.1
+  - Type: 3
+    MovementSpeed: 1.1
     RotationSpeed: 65
     IsClockwiseRotation: 1
     DestructionConfig:
@@ -32,8 +32,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 2
-    MovementSpeed: 2.5
+  - Type: 3
+    MovementSpeed: 1.5
     RotationSpeed: 70
     IsClockwiseRotation: 0
     DestructionConfig:
@@ -59,8 +59,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 2
-    MovementSpeed: 3
+  - Type: 3
+    MovementSpeed: 2
     RotationSpeed: 80
     IsClockwiseRotation: 1
     DestructionConfig:
@@ -78,8 +78,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 2
-    MovementSpeed: 3.1
+  - Type: 3
+    MovementSpeed: 2.1
     RotationSpeed: 90
     IsClockwiseRotation: 0
     DestructionConfig:
@@ -97,8 +97,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 1
-    MovementSpeed: 3.9
+  - Type: 2
+    MovementSpeed: 2.9
     RotationSpeed: 100
     IsClockwiseRotation: 1
     DestructionConfig:
@@ -116,8 +116,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 1
-    MovementSpeed: 4.2
+  - Type: 2
+    MovementSpeed: 3.2
     RotationSpeed: 111
     IsClockwiseRotation: 0
     DestructionConfig:
@@ -127,8 +127,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 0
-    MovementSpeed: 4.8
+  - Type: 1
+    MovementSpeed: 3.8
     RotationSpeed: 120
     IsClockwiseRotation: 0
     DestructionConfig:
@@ -138,8 +138,8 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Type: 0
-    MovementSpeed: 5.2
+  - Type: 1
+    MovementSpeed: 4.2
     RotationSpeed: 132
     IsClockwiseRotation: 1
     DestructionConfig:

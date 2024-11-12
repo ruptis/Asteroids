@@ -41,6 +41,9 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidFactory
         {
             foreach (AsteroidType type in Enum.GetValues(typeof(AsteroidType)).Cast<AsteroidType>())
             {
+                if (type == AsteroidType.Unknown)
+                    continue;
+
                 IReadOnlyList<AsteroidConfig> asteroidsConfigs = _configs.GetAsteroidsConfigs(type);
 
                 foreach (AsteroidConfig config in asteroidsConfigs)

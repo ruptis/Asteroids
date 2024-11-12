@@ -1,10 +1,7 @@
-﻿using Asteroids.Code.Configs;
-using Asteroids.Code.Gameplay.Asteroid;
-using Asteroids.Code.Gameplay.Services.AsteroidFactory;
+﻿using Asteroids.Code.Gameplay.Services.AsteroidsSpawner;
 using Asteroids.Code.Gameplay.Services.PlayerFactory;
 using Asteroids.Code.Tools.StateMachine;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace Asteroids.Code.Infrastructure.GameplayStates
 {
@@ -12,14 +9,14 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
     {
         private readonly GameplayStateMachine _gameplayStateMachine;
         private readonly IPlayerFactory _playerFactory;
-        private readonly IAsteroidFactory _asteroidsFactory;
+        private readonly IAsteroidSpawner _asteroidSpawner;
 
         public GameplayStartingState(GameplayStateMachine gameplayStateMachine, IPlayerFactory playerFactory,
-            IAsteroidFactory asteroidsFactory)
+            IAsteroidSpawner asteroidSpawner)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _playerFactory = playerFactory;
-            _asteroidsFactory = asteroidsFactory;
+            _asteroidSpawner = asteroidSpawner;
         }
 
         public UniTask Exit() => default;
@@ -28,11 +25,9 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
         {
             await _playerFactory.CreatePlayer();
 
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 10; i++)
             {
-                Vector2 position = Random.insideUnitCircle * 10;
-                AsteroidBehaviour asteroid = _asteroidsFactory.CreateAsteroid((AsteroidType)i, position);
-                asteroid.Launch(-position.normalized);
+                _asteroidSpawner.SpawnAsteroid();
             }
 
             _gameplayStateMachine.Enter<GameLoopState>().Forget();

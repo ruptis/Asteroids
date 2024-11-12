@@ -7,7 +7,9 @@ namespace Asteroids.Code.Gameplay.Services.Boundaries
     {
         public Vector2 Min { get; }
         public Vector2 Max { get; }
-        
+
+        public Vector2 Center { get; }
+
         public ScreenBoundaries(ICameraProvider cameraProvider)
         {
             UnityEngine.Camera camera = cameraProvider.Camera;
@@ -15,6 +17,7 @@ namespace Asteroids.Code.Gameplay.Services.Boundaries
             var halfWidth = halfHeight * camera.aspect;
             Min = new Vector2(-halfWidth, -halfHeight);
             Max = new Vector2(halfWidth, halfHeight);
+            Center = Vector2.zero;
         }
     }
 }
