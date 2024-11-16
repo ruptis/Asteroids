@@ -28,8 +28,9 @@ namespace Asteroids.Code.Gameplay.Services.PlayerFactory
 
         public async UniTask<ShipBehaviour> CreatePlayer()
         {
-            var player = await _assets.Load<ShipBehaviour>(_assetReference);
-            return _resolver.Instantiate(player, _boundaries.Center, Quaternion.identity);
+            var player = await _assets.Load<GameObject>(_assetReference);
+            GameObject instance = _resolver.Instantiate(player, _boundaries.Center, Quaternion.identity);
+            return instance.GetComponent<ShipBehaviour>();
         }
     }
 }

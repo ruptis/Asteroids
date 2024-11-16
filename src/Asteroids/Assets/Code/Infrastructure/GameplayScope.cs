@@ -5,11 +5,14 @@ using Asteroids.Code.Gameplay.Services.BulletFactory;
 using Asteroids.Code.Gameplay.Services.Camera;
 using Asteroids.Code.Gameplay.Services.CoordinateWrapper;
 using Asteroids.Code.Gameplay.Services.EnginePowerService;
+using Asteroids.Code.Gameplay.Services.HUDProvider;
 using Asteroids.Code.Gameplay.Services.PlayerFactory;
 using Asteroids.Code.Infrastructure.GameplayStates;
 using Asteroids.Code.Services.Input;
 using Asteroids.Code.Services.RandomService;
 using Asteroids.Code.Tools.StateMachine;
+using Asteroids.Code.Ui;
+using Asteroids.Code.Ui.Factory;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -34,6 +37,8 @@ namespace Asteroids.Code.Infrastructure
             builder.Register<IBoundaries, ScreenBoundaries>(Lifetime.Singleton);
             builder.Register<ICoordinateWrapper, CoordinateWrapper>(Lifetime.Singleton);
             builder.Register<IEnginePowerService, EnginePowerService>(Lifetime.Singleton);
+            builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
+            builder.Register<IHUDProvider, HUDProvider>(Lifetime.Singleton);
 
             builder.Register<GameplayInitializationState>(Lifetime.Singleton);
             builder.Register<GameplayStartingState>(Lifetime.Singleton);
