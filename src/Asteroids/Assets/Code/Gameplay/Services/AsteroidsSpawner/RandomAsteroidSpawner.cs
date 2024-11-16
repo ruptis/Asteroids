@@ -1,7 +1,9 @@
 ﻿using Asteroids.Code.Configs;
 using Asteroids.Code.Gameplay.Asteroid;
 using Asteroids.Code.Gameplay.Services.AsteroidFactory;
+using Asteroids.Code.Gameplay.Services.AsteroidsHolder;
 using Asteroids.Code.Gameplay.Services.Boundaries;
+using Asteroids.Code.Services.ConfigService;
 using Asteroids.Code.Services.RandomService;
 using UnityEngine;
 
@@ -16,12 +18,16 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsSpawner
         private readonly float _perimeter;
         private readonly Vector2 _center;
         private readonly Vector2[] _corners = new Vector2[4];
+        private readonly IAsteroidsHolder _asteroidsHolder;
+        private readonly GameConfig _gameConfig;
 
         public RandomAsteroidSpawner(IBoundaries boundaries, IAsteroidFactory asteroidFactory,
-            IRandomService randomService)
+            IRandomService randomService, IAsteroidsHolder asteroidsHolder, IConfigs configs)
         {
             _asteroidFactory = asteroidFactory;
             _randomService = randomService;
+            _asteroidsHolder = asteroidsHolder;
+            _gameConfig = configs.GetGameConfig();
             var width = boundaries.Max.x - boundaries.Min.x;
             var height = boundaries.Max.y - boundaries.Min.y;
             _perimeter = 2 * (width + height);
@@ -35,6 +41,9 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsSpawner
 
         public void SpawnAsteroid()
         {
+            if (_asteroidsHolder.AsteroidsCount >= _gameConfig.AsteroidsCount)
+                return;
+
             var spawnDistance = _randomService.GetRandom(0, _perimeter);
 
             Vector2 spawnPosition = Vector2.zero;
@@ -49,7 +58,7 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsSpawner
                     spawnPosition = corner + (nextCorner - corner).normalized * spawnDistance;
                     break;
                 }
- 
+
                 spawnDistance -= distanceToNextCorner;
             }
 
@@ -60,6 +69,12 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsSpawner
             var asteroidType = _randomService.GetRandomEnum<AsteroidType>();
             AsteroidBehaviour asteroid = _asteroidFactory.CreateAsteroid(asteroidType, spawnPosition);
             asteroid.Launch(direction);
+        }
+
+        public void SpawnAllAsteroids()
+        {
+            for (var i = 0; i < _gameConfig.AsteroidsCount; i++)
+                SpawnAsteroid();
         }
     }
 }

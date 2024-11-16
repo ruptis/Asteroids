@@ -7,9 +7,11 @@ namespace Asteroids.Code.Services.ConfigService
     public interface IConfigs
     {
         UniTask Initialize();
-        
+
+        GameConfig GetGameConfig();
+
         PlayerConfig GetPlayerConfig();
-        
+
         IReadOnlyList<AsteroidConfig> GetAsteroidsConfigs(AsteroidType type);
     }
 }

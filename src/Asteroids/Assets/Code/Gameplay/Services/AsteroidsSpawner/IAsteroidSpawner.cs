@@ -3,5 +3,7 @@
     public interface IAsteroidSpawner
     {
         void SpawnAsteroid();
+        
+        void SpawnAllAsteroids();
     }
 }

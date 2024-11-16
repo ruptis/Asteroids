@@ -16,7 +16,7 @@ MonoBehaviour:
   RotationSpeed: 200
   AccelerationTime: 2
   DecelerationTime: 2
-  MaxHealth: 5
+  MaxHealth: 10
   GunConfig:
     FireRate: 1
     BulletSpeed: 8

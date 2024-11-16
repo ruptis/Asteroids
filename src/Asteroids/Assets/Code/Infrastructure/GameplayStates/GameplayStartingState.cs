@@ -35,10 +35,7 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
             _hudProvider.SetHealth(player.Health);
             _deathObserver.ObserveDeath(player.Health);
 
-            for (var i = 0; i < 10; i++)
-            {
-                _asteroidSpawner.SpawnAsteroid();
-            }
+            _asteroidSpawner.SpawnAllAsteroids();
 
             _gameplayStateMachine.Enter<GameLoopState>().Forget();
         }

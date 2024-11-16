@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Asteroids.Code.Configs;
 using Asteroids.Code.Gameplay.Asteroid;
+using Asteroids.Code.Gameplay.Services.AsteroidsHolder;
 using Asteroids.Code.Services.AssetManagement;
 using Asteroids.Code.Services.ConfigService;
 using Asteroids.Code.Services.RandomService;
@@ -22,6 +23,7 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidFactory
         private readonly IConfigs _configs;
         private readonly IObjectResolver _resolver;
         private readonly IRandomService _randomService;
+        private readonly IAsteroidsHolder _asteroidsHolder;
 
         private readonly Dictionary<AsteroidConfig, ObjectPool<AsteroidBehaviour>> _pools = new();
 
@@ -29,12 +31,13 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidFactory
         private Transform _asteroidsParent;
 
         public PooledAsteroidFactory(IAssets assets, IConfigs configs, IObjectResolver resolver,
-            IRandomService randomService)
+            IRandomService randomService, IAsteroidsHolder asteroidsHolder)
         {
             _assets = assets;
             _configs = configs;
             _resolver = resolver;
             _randomService = randomService;
+            _asteroidsHolder = asteroidsHolder;
         }
 
         public async UniTask Initialize()
@@ -71,6 +74,7 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidFactory
                 .GetComponent<AsteroidBehaviour>();
 
             asteroid.Configure(config.MovementSpeed, config.RotationSpeed, config.IsClockwiseRotation);
+            asteroid.GetComponent<AsteroidDamageReceiver>().SetParts(config.DestructionConfig.Parts);
 
             asteroid.Destroyed += () => _pools[config].Release(asteroid);
 
@@ -83,13 +87,15 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidFactory
             return asteroidsConfigs[_randomService.GetRandom(0, asteroidsConfigs.Count)];
         }
 
-        private static void OnGetAsteroid(AsteroidBehaviour asteroid)
+        private void OnGetAsteroid(AsteroidBehaviour asteroid)
         {
             asteroid.gameObject.SetActive(true);
+            _asteroidsHolder.AddAsteroid(asteroid);
         }
 
-        private static void OnReleaseAsteroid(AsteroidBehaviour asteroid)
+        private void OnReleaseAsteroid(AsteroidBehaviour asteroid)
         {
+            _asteroidsHolder.RemoveAsteroid(asteroid);
             asteroid.gameObject.SetActive(false);
         }
     }

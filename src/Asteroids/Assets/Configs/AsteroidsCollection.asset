@@ -19,11 +19,11 @@ MonoBehaviour:
     IsClockwiseRotation: 1
     DestructionConfig:
       Parts:
-      - Type: 0
+      - Type: 1
         MinExitAngle: 10
         MaxExitAngle: 45
         PositionOffset: 1
-      - Type: 0
+      - Type: 1
         MinExitAngle: 110
         MaxExitAngle: 150
         PositionOffset: 1
@@ -38,19 +38,19 @@ MonoBehaviour:
     IsClockwiseRotation: 0
     DestructionConfig:
       Parts:
-      - Type: 1
+      - Type: 2
         MinExitAngle: 10
         MaxExitAngle: 30
         PositionOffset: 0.5
-      - Type: 0
+      - Type: 1
         MinExitAngle: 40
         MaxExitAngle: 60
         PositionOffset: 0
-      - Type: 1
+      - Type: 2
         MinExitAngle: 70
         MaxExitAngle: 90
         PositionOffset: 0.7
-      - Type: 0
+      - Type: 1
         MinExitAngle: 110
         MaxExitAngle: 130
         PositionOffset: 0
@@ -65,11 +65,11 @@ MonoBehaviour:
     IsClockwiseRotation: 1
     DestructionConfig:
       Parts:
-      - Type: 1
+      - Type: 2
         MinExitAngle: 0
         MaxExitAngle: 60
         PositionOffset: 0
-      - Type: 0
+      - Type: 1
         MinExitAngle: 90
         MaxExitAngle: 170
         PositionOffset: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
     IsClockwiseRotation: 0
     DestructionConfig:
       Parts:
-      - Type: 1
+      - Type: 2
         MinExitAngle: 0
         MaxExitAngle: 90
         PositionOffset: 0
@@ -103,11 +103,11 @@ MonoBehaviour:
     IsClockwiseRotation: 1
     DestructionConfig:
       Parts:
-      - Type: 0
+      - Type: 1
         MinExitAngle: 10
         MaxExitAngle: 80
         PositionOffset: 0
-      - Type: 0
+      - Type: 1
         MinExitAngle: 90
         MaxExitAngle: 160
         PositionOffset: 0

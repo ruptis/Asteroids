@@ -12,6 +12,7 @@ namespace Asteroids.Code.Services.ConfigService
         private readonly ILogService _logService;
         private readonly IAssets _assets;
 
+        private GameConfig _gameConfig;
         private PlayerConfig _playerConfig;
         private readonly Dictionary<AsteroidType, List<AsteroidConfig>> _asteroidsDictionary = new();
 
@@ -27,6 +28,7 @@ namespace Asteroids.Code.Services.ConfigService
 
             var tasks = new List<UniTask>
             {
+                LoadGameConfig(),
                 LoadPlayerConfig(),
                 LoadAsteroidsCollection()
             };
@@ -36,10 +38,22 @@ namespace Asteroids.Code.Services.ConfigService
             _logService.Log("Configs initialization finished");
         }
 
+        public GameConfig GetGameConfig() => _gameConfig;
+
         public PlayerConfig GetPlayerConfig() => _playerConfig;
 
         public IReadOnlyList<AsteroidConfig> GetAsteroidsConfigs(AsteroidType type) =>
             _asteroidsDictionary[type];
+        
+        private async UniTask LoadGameConfig()
+        {
+            GameConfig[] configs = await GetConfigs<GameConfig>();
+
+            if (EnsureOnlyOneConfig(configs))
+                _gameConfig = configs[0];
+
+            _logService.Log("GameConfig loaded");
+        }
         
         private async UniTask LoadPlayerConfig()
         {
