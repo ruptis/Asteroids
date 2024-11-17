@@ -12,6 +12,8 @@ namespace Asteroids.Code.Services.ConfigService
 
         PlayerConfig GetPlayerConfig();
 
+        AudioConfig GetAudioConfig();
+
         IReadOnlyList<AsteroidConfig> GetAsteroidsConfigs(AsteroidType type);
     }
 }

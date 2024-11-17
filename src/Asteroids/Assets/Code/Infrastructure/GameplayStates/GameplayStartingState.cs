@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Gameplay.Services.AsteroidsSpawner;
+﻿using Asteroids.Code.Gameplay.Services.AsteroidsDeaths;
+using Asteroids.Code.Gameplay.Services.AsteroidsSpawner;
 using Asteroids.Code.Gameplay.Services.HUDProvider;
 using Asteroids.Code.Gameplay.Services.PlayerFactory;
 using Asteroids.Code.Gameplay.Services.ShipDeath;
@@ -14,16 +15,19 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
         private readonly IPlayerFactory _playerFactory;
         private readonly IAsteroidSpawner _asteroidSpawner;
         private readonly IHUDProvider _hudProvider;
-        private readonly IShipDeathObserver _deathObserver;
+        private readonly IShipDeathObserver _shipDeathObserver;
+        private readonly IAsteroidDeathObserver _asteroidDeathObserver;
 
         public GameplayStartingState(GameplayStateMachine gameplayStateMachine, IPlayerFactory playerFactory,
-            IAsteroidSpawner asteroidSpawner, IHUDProvider hudProvider, IShipDeathObserver deathObserver)
+            IAsteroidSpawner asteroidSpawner, IHUDProvider hudProvider, 
+            IShipDeathObserver shipDeathObserver, IAsteroidDeathObserver asteroidDeathObserver)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _playerFactory = playerFactory;
             _asteroidSpawner = asteroidSpawner;
             _hudProvider = hudProvider;
-            _deathObserver = deathObserver;
+            _shipDeathObserver = shipDeathObserver;
+            _asteroidDeathObserver = asteroidDeathObserver;
         }
 
         public UniTask Exit() => default;
@@ -33,7 +37,8 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
             ShipBehaviour player = await _playerFactory.CreatePlayer();
 
             _hudProvider.SetHealth(player.Health);
-            _deathObserver.ObserveDeath(player);
+            _shipDeathObserver.ObserveDeath(player);
+            _asteroidDeathObserver.StartObserving();
 
             _asteroidSpawner.SpawnAllAsteroids();
 

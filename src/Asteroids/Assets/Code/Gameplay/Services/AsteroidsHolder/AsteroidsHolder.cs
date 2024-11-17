@@ -36,6 +36,8 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsHolder
         {
             var asteroids = new List<AsteroidBehaviour>(_asteroids);
 
+            AsteroidDestroyed = null;
+            
             foreach (AsteroidBehaviour asteroid in asteroids)
                 asteroid.Destroy();
         }

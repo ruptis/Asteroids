@@ -13,6 +13,7 @@ using Asteroids.Code.Gameplay.Services.HUDProvider;
 using Asteroids.Code.Gameplay.Services.PlayerFactory;
 using Asteroids.Code.Gameplay.Services.PointsSystem;
 using Asteroids.Code.Gameplay.Services.ShipDeath;
+using Asteroids.Code.Gameplay.Services.Sound;
 using Asteroids.Code.Infrastructure.GameplayStates;
 using Asteroids.Code.Services.Input;
 using Asteroids.Code.Services.RandomService;
@@ -51,8 +52,10 @@ namespace Asteroids.Code.Infrastructure
             builder.Register<IEnginePowerService, EnginePowerService>(Lifetime.Singleton);
             
             builder.Register<IShipDeathObserver, ShipDeathObserver>(Lifetime.Singleton).As<IDisposable>();
-            builder.Register<AsteroidDeathObserver>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<IAsteroidDeathObserver, AsteroidDeathObserver>(Lifetime.Singleton).As<IDisposable>();
             builder.Register<IPointsSystem, PointsSystem>(Lifetime.Singleton);
+            
+            builder.Register<ISoundPlayer, SoundPlayer>(Lifetime.Singleton);
 
             builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
             builder.Register<IPopUpService, PopUpService>(Lifetime.Singleton);

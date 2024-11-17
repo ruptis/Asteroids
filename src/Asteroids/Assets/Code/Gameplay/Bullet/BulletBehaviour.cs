@@ -7,6 +7,7 @@ namespace Asteroids.Code.Gameplay.Bullet
     public sealed class BulletBehaviour : MonoBehaviour
     {
         [SerializeField] private LinearMovement _movement;
+        [SerializeField] private GameObject _explosionPrefab;
 
         private float _lifetime;
 
@@ -24,9 +25,14 @@ namespace Asteroids.Code.Gameplay.Bullet
         {
             _lifetime -= Time.deltaTime;
             if (_lifetime <= 0)
-                Destroy();
+                Destroyed?.Invoke();
         }
 
-        public void Destroy() => Destroyed?.Invoke();
+        public void Destroy()
+        {
+            if (_explosionPrefab != null)
+                Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroyed?.Invoke();
+        }
     }
 }

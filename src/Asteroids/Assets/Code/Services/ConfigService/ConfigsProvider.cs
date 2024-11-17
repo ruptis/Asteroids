@@ -14,6 +14,7 @@ namespace Asteroids.Code.Services.ConfigService
 
         private GameConfig _gameConfig;
         private PlayerConfig _playerConfig;
+        private AudioConfig _audioConfig;
         private readonly Dictionary<AsteroidType, List<AsteroidConfig>> _asteroidsDictionary = new();
 
         public ConfigsProvider(ILogService logService, IAssets assets)
@@ -30,6 +31,7 @@ namespace Asteroids.Code.Services.ConfigService
             {
                 LoadGameConfig(),
                 LoadPlayerConfig(),
+                LoadAudioConfig(),
                 LoadAsteroidsCollection()
             };
 
@@ -42,9 +44,11 @@ namespace Asteroids.Code.Services.ConfigService
 
         public PlayerConfig GetPlayerConfig() => _playerConfig;
 
+        public AudioConfig GetAudioConfig() => _audioConfig;
+
         public IReadOnlyList<AsteroidConfig> GetAsteroidsConfigs(AsteroidType type) =>
             _asteroidsDictionary[type];
-        
+
         private async UniTask LoadGameConfig()
         {
             GameConfig[] configs = await GetConfigs<GameConfig>();
@@ -54,7 +58,7 @@ namespace Asteroids.Code.Services.ConfigService
 
             _logService.Log("GameConfig loaded");
         }
-        
+
         private async UniTask LoadPlayerConfig()
         {
             PlayerConfig[] configs = await GetConfigs<PlayerConfig>();
@@ -63,6 +67,16 @@ namespace Asteroids.Code.Services.ConfigService
                 _playerConfig = configs[0];
 
             _logService.Log("PlayerConfig loaded");
+        }
+
+        private async UniTask LoadAudioConfig()
+        {
+            AudioConfig[] configs = await GetConfigs<AudioConfig>();
+            
+            if (EnsureOnlyOneConfig(configs))
+                _audioConfig = configs[0];
+            
+            _logService.Log("AudioConfig loaded");
         }
 
         private async UniTask LoadAsteroidsCollection()
