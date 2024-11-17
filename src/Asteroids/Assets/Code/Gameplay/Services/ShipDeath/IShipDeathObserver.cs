@@ -4,6 +4,6 @@ namespace Asteroids.Code.Gameplay.Services.ShipDeath
 {
     public interface IShipDeathObserver
     {
-        void ObserveDeath(IHealth health);
+        void ObserveDeath(ShipBehaviour ship);
     }
 }

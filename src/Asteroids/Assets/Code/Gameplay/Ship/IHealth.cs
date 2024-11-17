@@ -8,6 +8,5 @@ namespace Asteroids.Code.Gameplay.Ship
         int MaxHealth { get; }
 
         event Action<int> HealthChanged;
-        event Action Death;
     }
 }

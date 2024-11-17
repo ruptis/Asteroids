@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Configs;
+﻿using System;
+using Asteroids.Code.Configs;
 using Asteroids.Code.Gameplay.Movement;
 using Asteroids.Code.Services.ConfigService;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Asteroids.Code.Gameplay.Ship
         private ShipHealth _health;
 
         public IHealth Health => _health;
+        
+        public event Action Destroyed;
 
         [Inject]
         public void Construct(IConfigs configs)
@@ -24,15 +27,17 @@ namespace Asteroids.Code.Gameplay.Ship
             _movement.Configure(config.MovementSpeed, config.RotationSpeed, config.AccelerationTime,
                 config.DecelerationTime);
             _gun.Configure(config.GunConfig.FireRate, config.GunConfig.BulletSpeed);
-
-            _health.Death += Destroy;
         }
-
-        private void OnDestroy() => _health.Death -= Destroy;
-
-        public void DecreaseHealth(int amount) =>
+        
+        public void DecreaseHealth(int amount)
+        {
             _health.DecreaseHealth(amount);
-
-        private void Destroy() => Destroy(gameObject);
+            
+            if (_health.CurrentHealth <= 0)
+            {
+                Destroy(gameObject);
+                Destroyed?.Invoke();
+            }
+        }
     }
 }

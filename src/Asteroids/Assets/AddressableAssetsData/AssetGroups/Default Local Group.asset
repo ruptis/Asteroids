@@ -100,6 +100,16 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9459b2e7bd78c8e4488fef5f8ef75244
+    m_Address: GameOverPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d44dbdab8568f7498dfea6eeab43a83
+    m_Address: MainMenuScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ab63ca30f8336434abea04c81d65cdbf, type: 2}
   m_SchemaSet:

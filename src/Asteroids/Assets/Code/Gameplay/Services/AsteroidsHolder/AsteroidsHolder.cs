@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Asteroids.Code.Configs;
 using Asteroids.Code.Gameplay.Asteroid;
 using Asteroids.Code.Services.ConfigService;
@@ -19,12 +20,16 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsHolder
 
         public int AsteroidsCount => _asteroids.Count;
 
+        public event Action<AsteroidBehaviour> AsteroidDestroyed;
+
         public void AddAsteroid(AsteroidBehaviour asteroid) => _asteroids.Add(asteroid);
 
         public void RemoveAsteroid(AsteroidBehaviour asteroid)
         {
-            if (_asteroids.Contains(asteroid))
-                _asteroids.Remove(asteroid);
+            if (!_asteroids.Contains(asteroid)) return;
+
+            _asteroids.Remove(asteroid);
+            AsteroidDestroyed?.Invoke(asteroid);
         }
 
         public void DestroyAllAsteroids()

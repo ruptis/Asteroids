@@ -26,6 +26,7 @@ namespace Asteroids.Code.Infrastructure
             builder.Register<IConfigs, ConfigsProvider>(Lifetime.Singleton);
             
             builder.Register<BootstrapGameState>(Lifetime.Singleton);
+            builder.Register<MainMenuState>(Lifetime.Singleton);
             builder.Register<MainGameState>(Lifetime.Singleton);
             builder.Register<StateFactory>(Lifetime.Singleton);
             builder.Register<GameStateMachine>(Lifetime.Singleton);

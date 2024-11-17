@@ -1,4 +1,5 @@
-﻿using Asteroids.Code.Gameplay.Asteroid;
+﻿using System;
+using Asteroids.Code.Gameplay.Asteroid;
 
 namespace Asteroids.Code.Gameplay.Services.AsteroidsHolder
 {
@@ -7,6 +8,8 @@ namespace Asteroids.Code.Gameplay.Services.AsteroidsHolder
         bool IsFull { get; }
 
         int AsteroidsCount { get; }
+        
+        event Action<AsteroidBehaviour> AsteroidDestroyed;
 
         void AddAsteroid(AsteroidBehaviour asteroid);
         void RemoveAsteroid(AsteroidBehaviour asteroid);

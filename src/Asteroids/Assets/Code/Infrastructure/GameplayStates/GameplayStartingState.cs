@@ -33,7 +33,7 @@ namespace Asteroids.Code.Infrastructure.GameplayStates
             ShipBehaviour player = await _playerFactory.CreatePlayer();
 
             _hudProvider.SetHealth(player.Health);
-            _deathObserver.ObserveDeath(player.Health);
+            _deathObserver.ObserveDeath(player);
 
             _asteroidSpawner.SpawnAllAsteroids();
 

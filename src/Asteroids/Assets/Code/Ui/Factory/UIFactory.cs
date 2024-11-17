@@ -23,5 +23,15 @@ namespace Asteroids.Code.Ui.Factory
             GameObject instance = _resolver.Instantiate(prefab);
             return instance.GetComponent<PlayerUI>();
         }
+        
+        public async UniTask<GameOverPopup> CreateGameOverPopup()
+        {
+            var prefab = await _assets.Load<GameObject>("GameOverPopup");
+            GameObject instance = _resolver.Instantiate(prefab);
+            
+            var gameOverPopup = instance.GetComponent<GameOverPopup>();
+            gameOverPopup.SetValues("Game Over", "You died!");
+            return gameOverPopup;
+        }
     }
 }

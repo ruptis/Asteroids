@@ -24,7 +24,7 @@ namespace Asteroids.Code.Infrastructure.GameStates
         {
             await _assets.Initialize();
             await _configs.Initialize();
-            _stateMachine.Enter<MainGameState>().Forget();
+            _stateMachine.Enter<MainMenuState>().Forget();
         }
     }
 }
